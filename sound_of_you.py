@@ -59,7 +59,7 @@ combined_waveform = np.sum(waveform, axis=0)
 freq_domain = np.fft.fftfreq(len(t), 1/Fs)
 spectrum = np.fft.fft(waveform)
 
-# Play the chord
+# Play the chord, volgens mij will sound ugly using this library just a warning... 
 sd.play(combined_waveform, Fs)
 sd.wait()
 
