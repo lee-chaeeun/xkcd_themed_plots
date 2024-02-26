@@ -42,7 +42,7 @@ def generate_chord():
     amplitudes = [0.7 for _ in names]
 
     # characteristic \in You
-    eigenschappen = ['enthousiasm', 'generosity', 'rechtvaardig', 'high EQ', 'funny', 'A baller', 'brave', 'epic', 'what a 9.81m/s']
+    eigenschappen = ['EPIC', 'KIND', 'RECHTVAARDIG', 'HIGH EQ', 'FUNNY', 'BALLER', 'MOEDIG', 'NICE2ME_:.)', 'WHAT A 9.81m/s']
 
     # assign rainbow colors to frequencies for fun
     colors = [hsv_to_rgb([i / (len(frequencies) - 1.3), 1, 0.9]) for i in range(len(frequencies))]
@@ -59,7 +59,7 @@ combined_waveform = np.sum(waveform, axis=0)
 freq_domain = np.fft.fftfreq(len(t), 1/Fs)
 spectrum = np.fft.fft(waveform)
 
-# Play the chord, volgens mij will sound ugly using this library just a warning... 
+# Play the chord
 sd.play(combined_waveform, Fs)
 sd.wait()
 
@@ -67,9 +67,9 @@ sd.wait()
 plt.figure(figsize=(10, 6))
 with plt.xkcd():
     plt.plot(t, combined_waveform)
-    plt.title('Sound of You (Time Domain)', **csfont)
-    plt.xlabel('Time (s)')
-    plt.ylabel('Amplitude')
+    plt.title('SOUND OF YOU (TIME DOMAIN)', **csfont)
+    plt.xlabel('TIME (s)')
+    plt.ylabel('AMPLITUDE')
     plt.legend()
     plt.grid(True)
 
@@ -77,13 +77,13 @@ with plt.xkcd():
 plt.figure(figsize=(10, 6))
 with plt.xkcd():
     for i, (freq, color, name, eigenschap) in enumerate(zip(frequencies, colors, names, eigenschappen)):
-        plt.plot(freq_domain, np.abs(spectrum[i]), label=f'Note {name} ({freq} Hz)', color=color)
+        plt.plot(freq_domain, np.abs(spectrum[i]), label=f'NOTE {name} ({freq} Hz)', color=color)
         plt.text(freq, np.abs(spectrum[i])[np.argmax(np.abs(spectrum[i]))], f'{eigenschap}', color=color, fontsize=10, **csfont)
     plt.xlim(min(frequencies) - 50, max(frequencies) + 50)
 
-plt.title('Sound of You (Frequency Domain)', **csfont)
-plt.xlabel('Frequency (Hz)')
-plt.ylabel('Magnitude')
+plt.title('SOUND OF YOU (FREQUENCY DOMAIN)', **csfont)
+plt.xlabel('FREQUENCY (HZ)')
+plt.ylabel('MAGNITUDE')
 plt.legend(bbox_to_anchor=(1.02, 0.1), loc='lower left', borderaxespad=0, prop=font)
 plt.grid(True)
 plt.tight_layout()
