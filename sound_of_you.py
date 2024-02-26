@@ -65,12 +65,13 @@ sd.wait()
 
 # Time Domain Plot
 plt.figure(figsize=(10, 6))
-plt.plot(t, combined_waveform)
-plt.title('Sound of You (Time Domain)', **csfont)
-plt.xlabel('Time (s)')
-plt.ylabel('Amplitude')
-plt.legend()
-plt.grid(True)
+with plt.xkcd():
+    plt.plot(t, combined_waveform)
+    plt.title('Sound of You (Time Domain)', **csfont)
+    plt.xlabel('Time (s)')
+    plt.ylabel('Amplitude')
+    plt.legend()
+    plt.grid(True)
 
 # Frequency Domain Plot
 plt.figure(figsize=(10, 6))
